@@ -1,28 +1,39 @@
 <template>
   <v-row align="center" justify="center">
-    <v-card class="mx-auto ma-2" color="indigo">
-      <v-card-item>
-        <div>
-          <div class="text-h6 mb-1" align="center">
-            Diga os outros que sou um:
-            {{ card.category }}
-          </div>
-          <div class="text-overline mb-1" align="center">
-            <span v-if="showTitle">{{ card.title }}</span>
-            <span v-else>******</span>
-            <v-btn icon @click="showTitle = !showTitle">
-              <v-icon>{{ showTitle ? 'mdi-eye-off' : 'mdi-eye' }}</v-icon>
-            </v-btn>
-          </div>
-          <div class="text-caption" align="center">
-            <ol>
-              <li v-for="(hint, index) in card.hints" :key="index">
-                <v-checkbox v-model="hintsGiven[index]" :label="hint" hide-details></v-checkbox>
-              </li>
-            </ol>
-          </div>
+    <v-card class="mx-auto ma-2" color="#424242">
+      <v-card-item> </v-card-item>
+      <v-card-actions class="justify-space-between">
+        <v-btn icon @click="$emit('previous')">
+          <v-icon>mdi-arrow-left</v-icon>
+        </v-btn>
+        <v-btn icon @click="$emit('next')">
+          <v-icon>mdi-arrow-right</v-icon>
+        </v-btn>
+      </v-card-actions>
+      <div>
+        <div class="text-h6 mb-1" align="center">
+          Diga aos outros que sou um:
+          <a style="font-size: 14px, text-color: white"> {{ card.category }}</a>
         </div>
-      </v-card-item>
+        <div class="text-overline mb-1 ma-1" align="center">
+          <span v-if="showTitle">{{ card.title }}</span>
+          <span v-else>******</span>
+          <v-btn icon @click="showTitle = !showTitle">
+            <v-icon>{{ showTitle ? 'mdi-eye-off' : 'mdi-eye' }}</v-icon>
+          </v-btn>
+        </div>
+        <div class="text-caption" align="center">
+          <ol>
+            <li v-for="(hint, index) in card.hints" :key="index">
+              <v-checkbox
+                v-model="hintsGiven[index]"
+                :label="hint"
+                hide-details
+              ></v-checkbox>
+            </li>
+          </ol>
+        </div>
+      </div>
     </v-card>
   </v-row>
 </template>
@@ -34,22 +45,30 @@ export default {
   data() {
     return {
       hintsGiven: [],
-      showTitle: false
+      showTitle: false,
     }
   },
   watch: {
     card: {
       handler() {
-        this.hintsGiven = new Array(this.card.hints.length).fill(false);
+        this.hintsGiven = new Array(this.card.hints.length).fill(false)
       },
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 }
 </script>
 
 <style scoped>
 .card {
   text-align: center;
+  max-width: 90%; /* Ajusta a largura máxima do card para 90% da largura da tela */
+  margin: 0; /* Centraliza o card horizontalmente */
+}
+
+@media only screen and (min-width: 600px) {
+  .card {
+    max-width: 400px; /* Define uma largura máxima para telas maiores */
+  }
 }
 </style>
