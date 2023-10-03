@@ -24,8 +24,9 @@ export default {
   props: ['history', 'value'],
   data() {
     return {
-     value: false // Remova esta linha
+      value: false
     }
   }
 }
 </script>
+

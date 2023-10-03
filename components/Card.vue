@@ -62,13 +62,18 @@ export default {
 <style scoped>
 .card {
   text-align: center;
-  max-width: 90%; /* Ajusta a largura máxima do card para 90% da largura da tela */
-  margin: 0; /* Centraliza o card horizontalmente */
+  max-width: 90%;
+  margin: 0;
 }
 
 @media only screen and (min-width: 600px) {
   .card {
-    max-width: 400px; /* Define uma largura máxima para telas maiores */
+    max-width: 400px;
   }
+}
+
+.text-link {
+  font-size: 14px; 
+  color: white; 
 }
 </style>
