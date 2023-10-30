@@ -20,7 +20,7 @@
 
       <!-- Tela 3: Exibição da Carta Sorteada -->
       <div v-else-if="mode === 'cards' && drawnCard">
-         <v-btn @click="mode = null">Voltar</v-btn>
+        <v-btn @click="mode = null">Voltar</v-btn>
         <Card
           style="margin: 0.1em"
           :card="drawnCard"
@@ -37,7 +37,7 @@
 
       <!-- Tela 4: Jogo Completo (a ser implementado) -->
       <div v-else-if="mode === 'fullGame'">
-        <!-- Lógica para o modo 'Jogo Completo' -->
+        <Board />
       </div>
 
       <!-- Diálogo de Histórico -->
@@ -65,12 +65,14 @@ import axios from 'axios'
 import Card from '../components/Card.vue'
 import HistoryDialog from '../components/HistoryDialog.vue'
 import DebugModeVue from '../components/DebugMode.vue'
+import Board from '../components/Board.vue'
 
 export default {
   components: {
     Card,
     HistoryDialog,
     DebugModeVue,
+    Board
   },
   data() {
     return {
