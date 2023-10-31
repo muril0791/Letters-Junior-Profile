@@ -1,12 +1,30 @@
 <template>
-  <div class="pawn" :style="{ backgroundColor: color }">
-    <div class="pawn-label">{{ playerName }}</div>
+  <div
+    v-if="isPlayerInCell"
+    class="pawn"
+    :style="{ backgroundColor: player.color }"
+  >
+    <div class="pawn-label">{{ player.name }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['color', 'playerName']
+  props: {
+    player: {
+      type: Object,
+      required: true,
+    },
+    cellIndex: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    isPlayerInCell() {
+      return this.player.position === this.cellIndex;
+    },
+  },
 }
 </script>
 

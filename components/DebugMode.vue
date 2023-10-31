@@ -12,7 +12,6 @@
           <v-list-item-title>Cartas Repetidas</v-list-item-title>
           <v-list-item-subtitle>
             <div class="chip-container">
-              <!-- Lista de títulos das cartas repetidas -->
               <v-chip v-for="card in repeatedCards" :key="card.title" small>
                 {{ card.title }}
               </v-chip>

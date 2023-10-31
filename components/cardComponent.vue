@@ -1,6 +1,6 @@
 <template>
   <v-row align="center" justify="center">
-    <v-card class="mx-auto ma-2" color="#424242">
+    <v-card class="mx-auto ma-2 card">
       <v-card-item> </v-card-item>
       <v-card-actions class="justify-space-between">
         <v-btn icon @click="$emit('previous')">
@@ -61,9 +61,17 @@ export default {
 
 <style scoped>
 .card {
-  text-align: center;
   max-width: 90%;
-  margin: 0;
+  margin: 0 auto 1em auto;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 @media only screen and (min-width: 600px) {
@@ -71,9 +79,5 @@ export default {
     max-width: 400px;
   }
 }
-
-.text-link {
-  font-size: 14px; 
-  color: white; 
-}
 </style>
+s
